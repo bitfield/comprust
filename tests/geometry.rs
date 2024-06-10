@@ -17,7 +17,7 @@ fn normalize(v: &mut [f64]) {
 }
 
 #[test]
-fn geometry() {
+fn main() {
     println!(
         "Magnitude of a unit vector: {}",
         magnitude(&[0.0, 1.0, 0.0])
