@@ -1,4 +1,4 @@
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 /// An event in the elevator system that the controller must react to.
 enum Event {
     CallButtonPressed { floor: i32, dir: Direction },
@@ -9,7 +9,7 @@ enum Event {
 }
 
 /// A direction of travel.
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 enum Direction {
     Up,
     Down,
@@ -45,6 +45,20 @@ fn main() {
     println!(
         "A ground floor passenger has pressed the up button: {:?}",
         lobby_call_button_pressed(0, Direction::Up)
+    );
+    assert_eq!(
+        Event::CallButtonPressed {
+            floor: 0,
+            dir: Direction::Up
+        },
+        lobby_call_button_pressed(0, Direction::Up)
+    );
+    assert_eq!(
+        Event::CallButtonPressed {
+            floor: 10,
+            dir: Direction::Down
+        },
+        lobby_call_button_pressed(10, Direction::Down)
     );
     println!(
         "The car has arrived on the ground floor: {:?}",

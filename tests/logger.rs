@@ -30,6 +30,8 @@ impl Logger for VerbosityFilter {
         }
     }
 }
+
+#[test]
 fn main() {
     let l = VerbosityFilter {
         max_verbosity: 3,
